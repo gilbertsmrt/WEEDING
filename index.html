@@ -10,7 +10,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> 
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <style>
         :root {
@@ -35,7 +36,7 @@
         h1, h2, h3, .font-serif { font-family: 'Cinzel', serif; }
         .font-aesthetic { font-family: 'Great Vibes', cursive; color: var(--text-brown); }
 
-        /* --- BACKGROUNDS VIDEO & BATIK (Merged Code 1 & 2) --- */
+        /* --- BACKGROUNDS VIDEO & BATIK --- */
         .video-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             object-fit: cover; z-index: -2; opacity: 0.3;
@@ -113,7 +114,7 @@
 
         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
 
-        /* --- GALLERY SWIPER (Dari Code 2) --- */
+        /* --- GALLERY SWIPER --- */
         .swiper { width: 100%; padding-top: 20px; padding-bottom: 50px; }
         .swiper-slide { background-position: center; background-size: cover; width: 300px; height: 300px; border-radius: 15px; border: 3px solid var(--accent-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
         .swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
@@ -149,7 +150,21 @@
         .youtube-wrapper { position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 3px solid var(--accent-gold); margin-top: 30px; z-index: 10;}
         .youtube-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        /* ========================================================
+           TAMBAHAN PERBAIKAN UNTUK MOBILE (ANDROID & IOS)
+           ======================================================== */
         @media (max-width: 768px) {
+            /* Memperbaiki bug background attachment fixed di Safari/iOS yang pecah */
+            .bg-batik-overlay { background-attachment: scroll; }
+            
+            /* Mengecilkan font aesthetic agar tidak terlalu besar/keluar layar di HP */
+            #cover h1.font-aesthetic, 
+            .bg-dark-gorga h2.font-aesthetic, 
+            .text-center h2.font-aesthetic { font-size: 3.5rem !important; }
+            
+            /* Mengecilkan bunga pinggiran di HP agar konten lebih terlihat */
+            .floral-corner { width: 130px; }
+
             .timeline::after { left: 31px; }
             .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
             .timeline-item::after { left: 21px; }
@@ -234,7 +249,7 @@
                     </div>
                     <h3 class="font-serif fw-bold mt-4" style="color: var(--gorga-red);">AHAHA AHAHA AHAHA</h3>
                     <p class="mb-1">Putra dari Bapak AAAAA dan Ibu AAAAAAA</p>
-                    <a href="https://www.instagram.com/leafitation.id/" target="_blank" class="text-decoration-none fw-bold" style="color: var(--accent-gold);"><i class="fab fa-instagram"></i> Instagram Tiara</a>
+                    <a href="https://www.instagram.com/gilbert.smrt/" target="_blank" class="text-decoration-none fw-bold" style="color: var(--accent-gold);"><i class="fab fa-instagram"></i> Instagram Gilbert</a>
                 </div>
                 
                 <div class="col-12 text-center my-md-0 my-2" data-aos="zoom-in">
@@ -250,7 +265,7 @@
                     </div>
                     <h3 class="font-serif fw-bold mt-4" style="color: var(--gorga-red);">WWWWWW WWWWWW</h3>
                     <p class="mb-1">Putri dari Bapak QQQQQQQ & Ibu EEEEEEEEE</p>
-                    <a href="https://www.instagram.com/leafitation.id/" target="_blank" class="text-decoration-none fw-bold" style="color: var(--accent-gold);"><i class="fab fa-instagram"></i> Instagram Jati</a>
+                    <a href="https://www.instagram.com/gilbert.smrt/" target="_blank" class="text-decoration-none fw-bold" style="color: var(--accent-gold);"><i class="fab fa-instagram"></i> Instagram Gilbert</a>
                 </div>
             </div>
         </section>
@@ -383,6 +398,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row mt-5" data-aos="fade-up">
+                    <div class="col-12 text-center">
+                        <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#konfirmasiModal" style="background: white; color: var(--text-brown); border: 2px solid var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                            <i class="fas fa-receipt text-success"></i> Konfirmasi Transfer
+                        </button>
+                    </div>
+                </div>
+
             </section>
         </div>
 
@@ -448,16 +472,49 @@
                 <h2 class="font-aesthetic mt-4 mb-4" style="font-size: 5rem; color: var(--accent-gold);">XXXXXX & ZZZZZZ</h2>
                 
                 <div class="d-flex justify-content-center gap-3 mt-4">
-                    <a href="https://leafitation.id/" target="_blank" class="text-decoration-none text-white fs-4"><i class="fas fa-globe"></i></a>
-                    <a href="https://www.instagram.com/leafitation.id/" target="_blank" class="text-decoration-none text-white fs-4"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/gilbert.smrt/" target="_blank" class="text-decoration-none text-white fs-4"><i class="fas fa-globe"></i></a>
+                    <a href="https://www.instagram.com/gilbert.smrt/" target="_blank" class="text-decoration-none text-white fs-4"><i class="fab fa-instagram"></i></a>
                </div>
     <p class="small mt-3" style="color: white;">
         Crafted with pride by 
-        <a href="https://leafitation.id/" target="_blank" class="text-decoration-none fw-bold" style="color: var(--accent-gold);">
+        <a href="https://www.instagram.com/gilbert.smrt/" target="_blank" class="text-decoration-none fw-bold" style="color: var(--accent-gold);">
             Gilbert B Simarmata
         </a>
     </p>
 </div>
+        </div>
+
+        <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="border-radius: 15px; border: 2px solid var(--accent-gold);">
+                    <div class="modal-header" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--accent-gold);">
+                        <h5 class="modal-title font-serif fw-bold" id="konfirmasiModalLabel" style="color: var(--gorga-red);"><i class="fas fa-receipt"></i> Konfirmasi Transfer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start" style="color: var(--text-brown);">
+                        <p class="small text-muted mb-4">Terima kasih atas tanda kasih yang diberikan. Silakan konfirmasi transfer Anda melalui form di bawah ini agar kami dapat mendatanya.</p>
+                        <form id="formKonfirmasi">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Nama Pengirim</label>
+                                <input type="text" class="form-control" id="tfNama" placeholder="Nama Anda" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Bank Tujuan</label>
+                                <select class="form-select" id="tfBank" required>
+                                    <option value="" selected disabled>-- Pilih Bank --</option>
+                                    <option value="BCA">BCA (Gilbert Simarmata)</option>
+                                    <option value="BNI">BNI (Gilbert Simarmata)</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold">Nominal Transfer (Rp)</label>
+                                <input type="number" class="form-control" id="tfNominal" placeholder="Contoh: 100000" required>
+                            </div>
+                            <button type="button" onclick="kirimKonfirmasi()" class="btn-custom w-100 justify-content-center"><i class="fab fa-whatsapp fs-5"></i> Kirim via WhatsApp</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -597,6 +654,25 @@
             
             document.getElementById('rsvpUcapan').value = "";
             document.getElementById('rsvpStatus').value = "";
+        }
+
+        // FUNGSI KONFIRMASI TRANSFER
+        function kirimKonfirmasi() {
+            const nama = document.getElementById('tfNama').value;
+            const bank = document.getElementById('tfBank').value;
+            const nominal = document.getElementById('tfNominal').value;
+            
+            if(!nama || !bank || !nominal) {
+                alert('Mohon lengkapi semua data konfirmasi.');
+                return;
+            }
+
+            // GANTI NOMOR WA INI DENGAN NOMOR KAMU (Tanpa angka 0 di depan, gunakan 62)
+            const noWA = "6283100217608"; 
+            const pesan = `Shalom, saya *${nama}* telah melakukan transfer ke rekening *${bank}* sebesar *Rp${nominal}* untuk kado pernikahan. Terima kasih dan Tuhan memberkati.`;
+            
+            const waLink = `https://api.whatsapp.com/send?phone=${noWA}&text=${encodeURIComponent(pesan)}`;
+            window.open(waLink, '_blank');
         }
     </script>
 </body>
