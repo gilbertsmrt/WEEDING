@@ -656,7 +656,7 @@
             document.getElementById('rsvpStatus').value = "";
         }
 
-        // FUNGSI KONFIRMASI TRANSFER
+        // FUNGSI KONFIRMASI TRANSFER (SUDAH DIPERBAIKI UNTUK HP)
         function kirimKonfirmasi() {
             const nama = document.getElementById('tfNama').value;
             const bank = document.getElementById('tfBank').value;
@@ -670,8 +670,11 @@
             const noWA = "6283100217608"; 
             const pesan = `Shalom, saya *${nama}* telah melakukan transfer ke rekening *${bank}* sebesar *Rp${nominal}* untuk kado pernikahan. Terima kasih dan Tuhan memberkati.`;
             
-            const waLink = `https://api.whatsapp.com/send?phone=${noWA}&text=${encodeURIComponent(pesan)}`;
-            window.open(waLink, '_blank');
+            // Menggunakan format wa.me yang lebih stabil di Android/iOS
+            const waLink = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+            
+            // Memaksa browser pindah halaman (mengurangi risiko diblokir pop-up blocker)
+            window.location.href = waLink;
         }
     </script>
 </body>
