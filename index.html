@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan GILBERT REV</title>
     
-    <!-- === SEO & SOCIAL MEDIA META TAG === -->
     <meta name="description" content="Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir di acara pernikahan kami.">
     <meta name="keywords" content="Undangan Pernikahan, Wedding Invitation, Gilbert Wedding, Adat Batak, Horas">
     <meta name="author" content="Gilbert B Simarmata">
@@ -337,10 +336,8 @@
 </head>
 <body data-bs-spy="scroll" data-bs-target="#floatingNavbar" tabindex="0">
 
-    <!-- === SCROLL PROGRESS === -->
     <div id="scroll-progress"></div>
 
-    <!-- === WEDDING PRELOADER === -->
     <div id="wedding-preloader">
         <div class="rings-anim">
             <svg viewBox="0 0 100 100" width="80" height="80">
@@ -374,7 +371,6 @@
     </nav>
 
     <section id="cover" class="bg-batik-overlay">
-        <!-- === HERO SLIDESHOW (Background animasi dibelakang foto utama) === -->
         <div class="cover-slideshow">
             <div class="cover-slide active" style="background-image: url('https://invite.leafitation.com/wp-content/uploads/2024/12/HOME-2-FILEminimizer.jpg');"></div>
             <div class="cover-slide" style="background-image: url('https://invite.leafitation.com/wp-content/uploads/2024/12/GALLERY-8-FILEminimizer.jpg');"></div>
@@ -467,7 +463,6 @@
                 </div>
             </div>
 
-            <!-- === ANIMASI GORGA DI SECTION MEMPELAI === -->
             <div class="gorga-ornament gorga-left">
                 <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="var(--gorga-red)" stroke-width="2.5" stroke-linecap="round">
                     <path class="gorga-path" d="M10,90 C40,90 20,40 50,20 C80,0 90,40 60,60 C40,75 50,90 90,90" />
@@ -557,7 +552,6 @@
                 </div>
             </section>
 
-            <!-- === ANIMASI GORGA DI SECTION EVENT === -->
             <div class="gorga-ornament gorga-left" style="opacity: 0.2;">
                 <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="var(--accent-gold)" stroke-width="2.5" stroke-linecap="round">
                     <path class="gorga-path" d="M10,90 C40,90 20,40 50,20 C80,0 90,40 60,60 C40,75 50,90 90,90" />
@@ -771,6 +765,9 @@
         </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -792,8 +789,7 @@
             pagination: { el: '.swiper-pagination', clickable: true }
         });
 
-        // ================= NEW SCRIPTS START =================
-        // 1. PRELOADER LOGIC
+        // ================= PRELOADER & UI SCRIPTS START =================
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const preloader = document.getElementById('wedding-preloader');
@@ -802,7 +798,6 @@
             }, 1500); 
         });
 
-        // 2. SCROLL PROGRESS INDICATOR LOGIC
         window.addEventListener('scroll', function() {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -812,7 +807,6 @@
             }
         });
 
-        // 3. HERO SLIDESHOW LOGIC
         const coverSlides = document.querySelectorAll('.cover-slide');
         let currentSlide = 0;
         if (coverSlides.length > 1) {
@@ -822,9 +816,7 @@
                 coverSlides[currentSlide].classList.add('active');
             }, 5000); 
         }
-        // ================= NEW SCRIPTS END =================
 
-        // Get URL Param
         const urlParams = new URLSearchParams(window.location.search);
         const namaTamu = urlParams.get('to');
         if(namaTamu) {
@@ -832,7 +824,6 @@
             document.getElementById('rsvpNama').value = namaTamu; 
         }
 
-        // Logic Buka Undangan
         const cover = document.getElementById('cover');
         const mainContent = document.getElementById('main-content');
         const musicBtn = document.getElementById('music-btn');
@@ -850,7 +841,6 @@
                 mainContent.style.opacity = "1";
                 AOS.refresh();
 
-                // Show floating elements
                 musicBtn.style.visibility = "visible";
                 musicBtn.style.opacity = "1";
                 musicBtn.classList.add("spin-anim");
@@ -877,7 +867,6 @@
             isPlaying = !isPlaying;
         }
 
-        // Smooth Scroll Floating Nav
         document.querySelectorAll('.floating-nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -887,7 +876,6 @@
             });
         });
 
-        // Countdown Timer
         const weddingDate = new Date("Jun 11, 2026 08:00:00").getTime();
         const timerInterval = setInterval(function() {
             const now = new Date().getTime();
@@ -905,51 +893,11 @@
             document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
 
-        // Salin Teks
         function salinTeks(elementId) {
             const teks = document.getElementById(elementId).innerText.replace(/\s+/g, '');
             navigator.clipboard.writeText(teks).then(() => {
                 alert("Nomor Rekening berhasil disalin!");
             });
-        }
-
-        // RSVP Logic
-        let countHadir = 0, countRagu = 0, countTidak = 0;
-        function submitRSVP(e) {
-            e.preventDefault();
-            const nama = document.getElementById('rsvpNama').value;
-            const ucapan = document.getElementById('rsvpUcapan').value;
-            const status = document.getElementById('rsvpStatus').value;
-
-            let badgeClass = "bg-secondary";
-            if(status === "Hadir") { countHadir++; badgeClass = "bg-success"; }
-            else if(status === "Masih Ragu") { countRagu++; badgeClass = "bg-warning text-dark"; }
-            else if(status === "Tidak Hadir") { countTidak++; badgeClass = "bg-danger"; }
-
-            document.getElementById('count-hadir').innerText = countHadir;
-            document.getElementById('count-ragu').innerText = countRagu;
-            document.getElementById('count-tidak').innerText = countTidak;
-
-            // Generate Avatar inisial
-            const initial = nama.charAt(0).toUpperCase();
-
-            const ucapanHTML = `
-                <div class="d-flex gap-3 mb-3 border-bottom pb-2" data-aos="fade-in">
-                    <div class="rounded-circle d-flex justify-content-center align-items-center text-white fw-bold" style="width: 45px; height: 45px; background: var(--gorga-red); font-family: 'Cinzel'; font-size: 1.2rem;">
-                        ${initial}
-                    </div>
-                    <div>
-                        <h6 class="fw-bold mb-1" style="color: var(--text-brown);">${nama} <span class="badge ${badgeClass} ms-1" style="font-size:0.7em">${status}</span></h6>
-                        <small class="text-muted d-block mb-1" style="font-size: 0.75rem;"><i class="far fa-clock"></i> Baru saja</small>
-                        <p class="small text-muted mb-0">"${ucapan}"</p>
-                    </div>
-                </div>
-            `;
-            document.getElementById('ucapanList').insertAdjacentHTML('afterbegin', ucapanHTML);
-            
-            document.getElementById('rsvpUcapan').value = "";
-            document.getElementById('rsvpStatus').value = "";
-            alert("Terima kasih! Ucapan Anda telah terkirim.");
         }
 
         function kirimKonfirmasi() {
@@ -966,6 +914,97 @@
             const waLink = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
             window.location.href = waLink;
         }
+        // ================= PRELOADER & UI SCRIPTS END =================
+
+        
+        // ================= FIREBASE DATABASE INTEGRATION =================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDWZB1sjDQXN4jtE_1GbN1SQ8C4QShRc1c",
+            authDomain: "weeding-jenry.firebaseapp.com",
+            projectId: "weeding-jenry",
+            storageBucket: "weeding-jenry.firebasestorage.app",
+            messagingSenderId: "428479207594",
+            appId: "1:428479207594:web:439bc88a205cb42c8c18d3",
+            // Tambahan URL Database (Pastikan sesuai dengan yang ada di menu Realtime Database console milikmu)
+            databaseURL: "https://weeding-jenry-default-rtdb.firebaseio.com"
+        };
+
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // Fungsi Simpan ke Firebase
+        function submitRSVP(e) {
+            e.preventDefault();
+            const nama = document.getElementById('rsvpNama').value;
+            const ucapan = document.getElementById('rsvpUcapan').value;
+            const status = document.getElementById('rsvpStatus').value;
+            
+            const timestamp = new Date().getTime();
+            
+            db.ref('rsvp-undangan/' + timestamp).set({
+                nama: nama,
+                ucapan: ucapan,
+                status: status,
+                waktu: timestamp
+            }).then(() => {
+                document.getElementById('rsvpUcapan').value = "";
+                document.getElementById('rsvpStatus').value = "";
+                alert("Terima kasih! Ucapan & konfirmasi Anda telah tersimpan.");
+            }).catch((error) => {
+                alert("Terjadi kesalahan: " + error.message);
+            });
+        }
+
+        // Fungsi Baca Data Otomatis dari Firebase
+        db.ref('rsvp-undangan').on('value', (snapshot) => {
+            document.getElementById('ucapanList').innerHTML = '';
+            
+            let countHadir = 0;
+            let countRagu = 0;
+            let countTidak = 0;
+            let dataWishes = [];
+            
+            snapshot.forEach((child) => {
+                dataWishes.push(child.val());
+            });
+            
+            // Dibalik agar komentar terbaru berada di posisi paling atas
+            dataWishes.reverse(); 
+
+            dataWishes.forEach((data) => {
+                let badgeClass = "bg-secondary";
+                if(data.status === "Hadir") { countHadir++; badgeClass = "bg-success"; }
+                else if(data.status === "Masih Ragu") { countRagu++; badgeClass = "bg-warning text-dark"; }
+                else if(data.status === "Tidak Hadir") { countTidak++; badgeClass = "bg-danger"; }
+
+                const initial = data.nama ? data.nama.charAt(0).toUpperCase() : '?';
+                
+                // Format Waktu
+                const dateObj = new Date(data.waktu);
+                const waktuString = dateObj.toLocaleDateString('id-ID') + ' ' + dateObj.toLocaleTimeString('id-ID', {hour: '2-digit', minute:'2-digit'});
+
+                const ucapanHTML = `
+                    <div class="d-flex gap-3 mb-3 border-bottom pb-2" data-aos="fade-in">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center text-white fw-bold flex-shrink-0" style="width: 45px; height: 45px; background: var(--gorga-red); font-family: 'Cinzel'; font-size: 1.2rem;">
+                            ${initial}
+                        </div>
+                        <div>
+                            <h6 class="fw-bold mb-1" style="color: var(--text-brown);">${data.nama} <span class="badge ${badgeClass} ms-1" style="font-size:0.7em">${data.status}</span></h6>
+                            <small class="text-muted d-block mb-1" style="font-size: 0.75rem;"><i class="far fa-clock"></i> ${waktuString}</small>
+                            <p class="small text-muted mb-0">"${data.ucapan}"</p>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('ucapanList').insertAdjacentHTML('beforeend', ucapanHTML);
+            });
+
+            // Update Counter di UI
+            document.getElementById('count-hadir').innerText = countHadir;
+            document.getElementById('count-ragu').innerText = countRagu;
+            document.getElementById('count-tidak').innerText = countTidak;
+        });
+        // ================= FIREBASE DATABASE INTEGRATION END =================
     </script>
 </body>
 </html>
