@@ -915,12 +915,15 @@
         });
 
         // ================= PRELOADER & UI SCRIPTS START =================
-        window.addEventListener('load', function() {
+        document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() {
                 const preloader = document.getElementById('wedding-preloader');
                 if(preloader){
                     preloader.style.opacity = '0';
-                    setTimeout(() => { preloader.style.visibility = 'hidden'; }, 1000);
+                    setTimeout(() => { 
+                        preloader.style.visibility = 'hidden';
+                        preloader.style.display = 'none'; // Tambahan agar benar-benar hilang dari layar
+                    }, 1000);
                 }
             }, 1500); 
         });
