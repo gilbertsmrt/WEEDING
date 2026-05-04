@@ -68,10 +68,11 @@
         .bg-dark-gorga .font-aesthetic { text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); } /* Kontras untuk background gelap */
         p { line-height: 1.7; font-weight: 400; }
 
-        /* BACKGROUNDS */
+        /* BACKGROUNDS OPTIMIZED */
         .video-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             object-fit: cover; z-index: -2; opacity: 0.3;
+            will-change: transform; transform: translateZ(0);
         }
         .bg-batik-overlay {
             background: linear-gradient(135deg, rgba(253, 249, 241, 0.95) 0%, rgba(220, 200, 180, 0.88) 100%),
@@ -89,14 +90,15 @@
             background-image: url('https://invite.leafitation.com/wp-content/uploads/2024/12/BATIK-MEDAN.png'); 
             background-size: contain; background-repeat: repeat-x; background-position: center;
             animation: slideBatik 30s linear infinite;
+            will-change: background-position; transform: translateZ(0);
         }
         @keyframes slideBatik { 0% { background-position: 0 center; } 100% { background-position: 500px center; } }
 
-        /* VEKTOR & DEKORASI */
+        /* VEKTOR & DEKORASI OPTIMIZED */
         .floral-corner {
             position: absolute; width: 220px; max-width: 30vw; z-index: 5; pointer-events: none;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
             animation: swayBunga 6s ease-in-out infinite alternate;
+            will-change: transform; transform: translateZ(0);
         }
         .floral-tl { top: -10px; left: -10px; transform-origin: top left; }
         .floral-tr { top: -10px; right: -10px; transform: scaleX(-1); transform-origin: top right; }
@@ -111,12 +113,17 @@
             box-shadow: 0 10px 30px var(--accent-gold-glow);
             animation: floatUpDown 5s ease-in-out infinite;
             margin: 0 auto 30px auto; display: block; position: relative; z-index: 10; background-color: var(--bg-cream); padding: 8px;
+            will-change: transform;
         }
         @keyframes floatUpDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* ANIMASI KELOPAK */
+        /* ANIMASI KELOPAK OPTIMIZED */
         .petals-container { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 100; }
-        .petal { position: absolute; background-color: var(--gorga-red); border-radius: 15px 0 15px 0; opacity: 0; animation: fall linear infinite, sway ease-in-out infinite alternate; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+        .petal { 
+            position: absolute; background-color: var(--gorga-red); border-radius: 15px 0 15px 0; opacity: 0; 
+            animation: fall linear infinite, sway ease-in-out infinite alternate; 
+            will-change: transform, top, opacity; transform: translateZ(0); 
+        }
         .petal:nth-child(1) { left: 15%; width: 14px; height: 20px; animation-duration: 9s, 3s; filter: blur(1px); }
         .petal:nth-child(2) { left: 35%; width: 12px; height: 16px; animation-duration: 12s, 4s; animation-delay: 2s, 1s; }
         .petal:nth-child(3) { left: 55%; width: 18px; height: 26px; animation-duration: 8s, 2s; animation-delay: 4s, 0.5s; }
@@ -201,9 +208,9 @@
         .youtube-wrapper { position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 3px solid var(--accent-gold); margin-top: 30px; z-index: 10;}
         .youtube-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* COUNTDOWN */
-        .timer-box { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 15px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.4); min-width: 80px; margin: 5px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.3s;}
-        .timer-box:hover { transform: scale(1.05); background: rgba(255,255,255,0.15); }
+        /* COUNTDOWN OPTIMIZED */
+        .timer-box { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.4); min-width: 80px; margin: 5px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.3s;}
+        .timer-box:hover { transform: scale(1.05); background: rgba(0,0,0,0.6); }
 
         /* DESAIN LUXURY BANK CARD (REVISED VERSION) */
         .luxury-bank-card {
@@ -228,7 +235,6 @@
         }
         .card-chip { width: 45px; opacity: 0.8; margin-bottom: 0; }
         .bank-logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.8rem; font-style: italic; color: #003366; }
-        .dana-logo { color: #118EEA; font-style: normal; letter-spacing: 2px; }
         .bank-number { font-family: 'Courier New', Courier, monospace; font-size: 1.3rem; font-weight: bold; letter-spacing: 3px; color: var(--gorga-black); margin-bottom: 0px; }
         .bank-owner { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 5px; }
         .btn-copy-small {
@@ -260,7 +266,7 @@
             background-size: cover; opacity: 0.15; mix-blend-mode: overlay; pointer-events: none;
         }
 
-        /* MUSIC & FLOATING NAV */
+        /* MUSIC & FLOATING NAV OPTIMIZED */
         #music-btn {
             position: fixed; bottom: 90px; right: 20px; background: var(--gorga-red); color: white; border: 2px solid var(--accent-gold);
             border-radius: 50%; 
@@ -273,13 +279,13 @@
         .spin-anim { animation: spin 4s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* FLOATING NAVIGATION BAR */
         .floating-nav {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(253, 249, 241, 0.95); backdrop-filter: blur(10px);
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateZ(0); /* PERBAIKAN: OVERRIDE TRANSFORM DISATUKAN DI SINI */
+            background: rgba(253, 249, 241, 0.98); 
             padding: 10px 25px; border-radius: 50px; display: flex; gap: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 1px solid var(--accent-gold);
             z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 1s ease;
+            will-change: transform, opacity;
         }
         .floating-nav a { color: var(--text-brown); font-size: 1.2rem; transition: 0.3s; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 3px;}
         .floating-nav a span { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; font-family: 'Montserrat', sans-serif;}
@@ -310,13 +316,14 @@
         }
         .cover-slide.active { opacity: 1; transform: scale(1.1); }
 
-        /* ANIMASI GORGA BATAK DRAWING */
-        .gorga-ornament { position: absolute; opacity: 0.3; z-index: 1; pointer-events: none; }
+        /* ANIMASI GORGA BATAK DRAWING OPTIMIZED */
+        .gorga-ornament { position: absolute; opacity: 0.3; z-index: 1; pointer-events: none; will-change: opacity; transform: translateZ(0); }
         .gorga-left { bottom: 20px; left: 20px; }
         .gorga-right { bottom: 20px; right: 20px; transform: scaleX(-1); }
         .gorga-path {
             stroke-dasharray: 200; stroke-dashoffset: 200;
             animation: drawGorga 6s ease-in-out infinite alternate;
+            will-change: stroke-dashoffset;
         }
         @keyframes drawGorga {
             0% { stroke-dashoffset: 200; opacity: 0; }
@@ -461,7 +468,7 @@
         <h1 class="font-aesthetic mt-2" style="font-size: 4.5rem; color: var(--gorga-red); text-shadow: 2px 2px 4px rgba(255,255,255,0.9); z-index: 10; padding: 0 10px;" data-aos="fade-up">Jenry & Devi</h1>
         <p class="font-serif fw-bold mb-2" style="letter-spacing: 3px; z-index: 10; color: var(--text-brown);">20 & 21 . 05 . 2026</p>
         
-        <div class="mt-2 p-3 rounded-4" style="background: rgba(255,255,255,0.9); backdrop-filter: blur(5px); border: 2px solid rgba(212,175,55,0.6); z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 90%;" data-aos="fade-up" data-aos-delay="300">
+        <div class="mt-2 p-3 rounded-4" style="background: rgba(255,255,255,0.98); border: 2px solid rgba(212,175,55,0.6); z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 90%;" data-aos="fade-up" data-aos-delay="300">
             <p class="mb-1 small fw-bold">Kepada Yth. Bpk/Ibu/Saudara/i</p>
             <h5 class="fw-bold my-1" style="color: var(--gorga-red);" id="nama-tamu">Tamu Undangan</h5>
         </div>
@@ -662,10 +669,10 @@
             
             <section class="container position-relative" style="z-index: 10;" data-aos="fade-up">
                 
-                <div class="text-center mx-auto" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); padding: 40px 20px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.4); max-width: 650px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+                <div class="text-center mx-auto" style="background: rgba(0, 0, 0, 0.4); padding: 40px 20px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.4); max-width: 650px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
                     <i class="fas fa-gift fs-1 text-white mb-3 d-block text-center"></i>
                     <h2 class="font-serif fw-bold mb-3 text-white text-center">Wedding Gift</h2>
-                    <p class="mb-4 text-white text-center px-md-4">Kehadiran dan doa restu Anda adalah berkat yang sangat berarti bagi kami. Namun, jika Anda ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui <i>cashless</i>.</p>
+                    <p class="mb-4 text-white text-center px-md-4">Kehadiran dan doa restu Anda adalah berkat yang sangat berarti bagi kami. Namun, jika Anda ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui <i>cashless</i> atau hadiah fisik.</p>
                     
                     <button class="btn-custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGift" aria-expanded="false" aria-controls="collapseGift" style="background: white; color: var(--text-brown); border: 2px solid var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
                         <i class="fas fa-wallet text-warning"></i> Klik di Sini
@@ -692,30 +699,12 @@
                             </div>
                         </div>
                         
-                        <div class="col-md-8 col-12">
-                            <div class="luxury-bank-card">
-                                <div class="d-flex justify-content-between align-items-start mb-4">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/6404/6404100.png" class="card-chip" alt="Chip" loading="lazy">
-                                    <div class="bank-logo dana-logo d-flex align-items-center gap-1">
-                                        <span style="background: #118EEA; color: white; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; font-style: normal;"><i class="fas fa-wallet"></i></span>DANA
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-end mt-2">
-                                    <div>
-                                        <div class="bank-owner">SRI DEVI DIADORA</div>
-                                        <div class="bank-number" id="rek2">082167629942</div>
-                                    </div>
-                                    <button class="btn-copy-small" onclick="salinTeks('rek2')">
-                                        <i class="far fa-copy"></i> Salin
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- DANA Card dihapus sesuai permintaan -->
                         
                         <div class="col-md-8 col-12">
                             <div class="luxury-bank-card text-center d-flex flex-column align-items-center justify-content-center" style="padding: 25px;">
                                 <i class="fas fa-home gift-icon-card"></i>
-                                <h5 class="fw-bold text-dark mb-3">Kirim Hadiah</h5>
+                                <h5 class="fw-bold text-dark mb-3">Kirim Hadiah Fisik</h5>
                                 <p class="small text-muted mb-0" style="line-height: 1.6; max-width: 90%;">Jalan Kolam Renang No. 126, Gundaling I, Brastagi (Berastagi) (No 126), KAB. KARO, BRASTAGI (BERASTAGI), SUMATERA UTARA, ID, 22152</p>
                             </div>
                         </div>
@@ -723,25 +712,22 @@
                         <div class="col-md-8 col-12">
                             <div class="luxury-bank-card text-center d-flex flex-column align-items-center justify-content-center" style="padding: 25px;">
                                 <i class="fas fa-home gift-icon-card"></i>
-                                <h5 class="fw-bold text-dark mb-3">Kirim Hadiah</h5>
+                                <h5 class="fw-bold text-dark mb-3">Kirim Hadiah Fisik</h5>
                                 <p class="small text-muted mb-0" style="line-height: 1.6; max-width: 90%;">Klinik Darni Sembiring, Jalan Let Umar Baki No. 165 B, Paya Robah, Paya Roba, Binjai Barat (Klinik Pratama Darn), KOTA BINJAI, BINJAI BARAT, SUMATERA UTARA, ID, 20716</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row mt-4 mb-3">
-                        <div class="col-12 text-center">
-                            <p class="small text-white-50 mb-2 font-aesthetic fs-4">Atau lebih praktis dengan</p>
-                            <button type="button" class="btn-custom" data-bs-toggle="modal" data-bs-target="#qrisModal" style="background: var(--gorga-black); color: var(--accent-gold); border: 2px solid var(--accent-gold); box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-                                <i class="fas fa-qrcode fs-5"></i> Tampilkan QRIS
-                            </button>
-                        </div>
-                    </div>
+                    <!-- Tombol QRIS Dihapus -->
 
                     <div class="row mt-4">
-                        <div class="col-12 text-center">
+                        <div class="col-12 text-center d-flex flex-column align-items-center gap-3">
                             <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#konfirmasiModal" style="background: white; color: var(--text-brown); border: 2px solid var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
                                 <i class="fas fa-receipt text-success"></i> Konfirmasi Transfer
+                            </button>
+                            <!-- Tombol Konfirmasi Hadiah Fisik Ditambahkan -->
+                            <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#konfirmasiHadiahModal" style="background: white; color: var(--text-brown); border: 2px solid var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                                <i class="fas fa-box-open text-primary"></i> Konfirmasi Kirim Hadiah
                             </button>
                         </div>
                     </div>
@@ -749,6 +735,7 @@
 
             </section>
         </div>
+        
         <section id="rsvp" class="container pb-5 mt-5 bg-batik-overlay" data-aos="fade-up">
             <h2 class="font-serif fw-bold mb-2 text-center" style="color: var(--gorga-red);">RSVP & Wishes</h2>
             <p class="text-muted mb-5 text-center">Konfirmasi kehadiran Anda dengan mengisi form berikut</p>
@@ -810,7 +797,6 @@
 
             <div class="container position-relative" style="z-index: 10;" data-aos="fade-up">
                 <div class="closing-arch-wrapper">
-                    <!-- LAZY LOADING DITAMBAHKAN -->
                     <img src="N.0.jpg" alt="Closing Photo" loading="lazy">
                 </div>
 
@@ -821,7 +807,7 @@
                     Atas segala perhatian, doa & kebaikan Anda, kami ucapkan terima kasih yang tak terhingga.
                 </p>
                 
-                <h2 class="font-aesthetic" style="font-size: 3.5rem; color: var(--accent-gold); text-shadow: 2px 2px 5px rgba(0,0,0,0.6);">
+                <h2 class="font-aesthetic" style="display: block; width: 100%; text-align: center; margin: 0 auto; font-size: 3.5rem; color: var(--accent-gold); text-shadow: 2px 2px 5px rgba(0,0,0,0.6);">
                     Jenry & Devi
                 </h2>
             </div>
@@ -838,6 +824,7 @@
         </div>
     </div> 
 
+    <!-- Modal Konfirmasi Transfer (BNI dihapus) -->
     <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="border-radius: 15px; border: 2px solid var(--accent-gold);">
@@ -856,8 +843,8 @@
                             <label class="form-label small fw-bold">Bank Tujuan</label>
                             <select class="form-select" id="tfBank" required>
                                 <option value="" selected disabled>-- Pilih Bank --</option>
-                                <option value="BCA">BCA (Nama Pengantin)</option>
-                                <option value="BNI">BNI (Nama Pengantin)</option>
+                                <option value="BCA">BRI (JENRI CARDO SIMARMATA)</option>
+                                <!-- Opsi BNI Dihapus -->
                             </select>
                         </div>
                         <div class="mb-4">
@@ -871,27 +858,31 @@
         </div>
     </div>
 
-    <div class="modal fade" id="qrisModal" tabindex="-1" aria-labelledby="qrisModalLabel" aria-hidden="true">
+    <!-- Modal Konfirmasi Hadiah Fisik (DITAMBAHKAN) -->
+    <div class="modal fade" id="konfirmasiHadiahModal" tabindex="-1" aria-labelledby="konfirmasiHadiahModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 15px; border: 2px solid var(--accent-gold); background-color: var(--bg-cream); overflow: hidden;">
-                <div class="modal-header" style="background: linear-gradient(135deg, rgba(253, 249, 241, 0.95), rgba(220, 200, 180, 0.5)); border-bottom: 2px solid var(--accent-gold);">
-                    <h5 class="modal-title font-serif fw-bold" id="qrisModalLabel" style="color: var(--gorga-red);">
-                        <i class="fas fa-qrcode"></i> Scan QRIS
-                    </h5>
+            <div class="modal-content" style="border-radius: 15px; border: 2px solid var(--accent-gold);">
+                <div class="modal-header" style="background-color: var(--bg-cream); border-bottom: 1px solid var(--accent-gold);">
+                    <h5 class="modal-title font-serif fw-bold" id="konfirmasiHadiahModalLabel" style="color: var(--gorga-red);"><i class="fas fa-box-open"></i> Konfirmasi Kirim Hadiah</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center py-4" style="color: var(--text-brown);">
-                    <p class="small text-muted mb-4 px-3">
-                        Scan barcode di bawah ini menggunakan aplikasi M-Banking atau E-Wallet Anda (Gopay, OVO, Dana, LinkAja, dll).
-                    </p>
-                    <div class="p-3 mb-3 mx-auto d-inline-block" style="background: white; border-radius: 15px; border: 2px dashed var(--accent-gold); box-shadow: 0 10px 30px var(--accent-gold-glow); position: relative;">
-                        <img src="URL_GAMBAR_QRIS_ANDA.jpg" alt="QRIS Pengantin" class="img-fluid rounded" style="max-width: 220px; width: 100%; object-fit: contain;">
-                    </div>
-                    <h6 class="font-serif fw-bold mt-2 mb-1" style="color: var(--gorga-dark); font-size: 1.1rem;">a.n. Nama Pengantin</h6>
-                    <p class="small text-muted mb-4">NMID: 1234567890123</p>
-                    <a href="URL_GAMBAR_QRIS_ANDA.jpg" download="QRIS-Wedding-Gilbert.jpg" class="btn-custom w-100 justify-content-center" style="border-radius: 10px;">
-                        <i class="fas fa-download"></i> Simpan Gambar QRIS
-                    </a>
+                <div class="modal-body text-start" style="color: var(--text-brown);">
+                    <p class="small text-muted mb-4">Terima kasih atas kado fisik yang diberikan. Silakan konfirmasi pengiriman Anda agar kami dapat mendatanya.</p>
+                    <form id="formKonfirmasiHadiah">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Nama Pengirim</label>
+                            <input type="text" class="form-control" id="hdNama" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Ekspedisi / Kurir</label>
+                            <input type="text" class="form-control" id="hdKurir" placeholder="Contoh: JNE, J&T, Gosend" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold">Nomor Resi / Keterangan Tambahan</label>
+                            <input type="text" class="form-control" id="hdResi" placeholder="Nomor Resi Pengiriman" required>
+                        </div>
+                        <button type="button" onclick="kirimKonfirmasiHadiah()" class="btn-custom w-100 justify-content-center"><i class="fab fa-whatsapp fs-5"></i> Kirim via WhatsApp</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -922,7 +913,7 @@
                     preloader.style.opacity = '0';
                     setTimeout(() => { 
                         preloader.style.visibility = 'hidden';
-                        preloader.style.display = 'none'; // Tambahan agar benar-benar hilang dari layar
+                        preloader.style.display = 'none'; 
                     }, 1000);
                 }
             }, 1500); 
@@ -967,8 +958,8 @@
             document.body.style.overflowX = "hidden";
 
             cover.style.opacity = "0"; 
-            cover.style.transform = "translateY(-100vh) scale(1.05)"; // Efek Scale Tambahan
-            cover.style.filter = "blur(5px)"; // Efek Blur Mewah
+            cover.style.transform = "translateY(-100vh) scale(1.05)"; 
+            cover.style.filter = "blur(5px)"; 
             
             setTimeout(() => {
                 cover.style.display = "none";
@@ -985,7 +976,7 @@
 
                 bgMusic.play().catch(e => console.log("Auto-play blocked"));
                 isPlaying = true;
-            }, 1500); // Diperpanjang agar sejalan dengan durasi transisi
+            }, 1500); 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1041,11 +1032,27 @@
             const nominal = document.getElementById('tfNominal').value;
             
             if(!nama || !bank || !nominal) {
-                alert('Mohon lengkapi semua data konfirmasi.'); return;
+                alert('Mohon lengkapi semua data konfirmasi transfer.'); return;
             }
 
-            const noWA = "6283100217608"; 
+            const noWA = "6282211444170"; 
             const pesan = `Shalom, saya *${nama}* telah melakukan transfer ke rekening *${bank}* sebesar *Rp${nominal}* untuk kado pernikahan. Terima kasih dan Tuhan memberkati.`;
+            const waLink = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
+            window.location.href = waLink;
+        }
+
+        // FUNGSI JS KONFIRMASI HADIAH FISIK (DITAMBAHKAN)
+        function kirimKonfirmasiHadiah() {
+            const nama = document.getElementById('hdNama').value;
+            const kurir = document.getElementById('hdKurir').value;
+            const resi = document.getElementById('hdResi').value;
+            
+            if(!nama || !kurir || !resi) {
+                alert('Mohon lengkapi semua data konfirmasi pengiriman hadiah.'); return;
+            }
+
+            const noWA = "6282211444170"; 
+            const pesan = `Shalom, saya *${nama}* telah mengirimkan kado fisik pernikahan melalui jasa pengiriman *${kurir}* dengan nomor resi / keterangan: *${resi}*. Terima kasih dan Tuhan memberkati.`;
             const waLink = `https://wa.me/${noWA}?text=${encodeURIComponent(pesan)}`;
             window.location.href = waLink;
         }
