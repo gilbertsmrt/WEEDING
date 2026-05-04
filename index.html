@@ -436,8 +436,9 @@
         <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
     </div>
 
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://invite.leafitation.com/wp-content/uploads/2025/07/Gondang-Batak-Horbo-Paung-_-Gondang-Uning-uningan-Batak-Toba-mp3cut.net_.mp3" type="audio/mpeg">
+    <!-- HANYA BAGIAN INI YANG DIUBAH: MENAMBAHKAN PRELOAD="NONE" -->
+    <audio id="bg-music" loop preload="none">
+        <source src="SITALASARI.mp3" type="audio/mpeg">
     </audio>
     <button id="music-btn" onclick="toggleMusic()"><i class="fas fa-compact-disc"></i></button>
 
@@ -843,7 +844,7 @@
                             <label class="form-label small fw-bold">Bank Tujuan</label>
                             <select class="form-select" id="tfBank" required>
                                 <option value="" selected disabled>-- Pilih Bank --</option>
-                                <option value="BCA">BRI (JENRI CARDO SIMARMATA)</option>
+                                <option value="BCA">BCA (Nama Pengantin)</option>
                                 <!-- Opsi BNI Dihapus -->
                             </select>
                         </div>
